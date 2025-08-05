@@ -2,6 +2,8 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import Navigation from "../components/Navigation";
 import SimpleSlider from "./SimpleSlider";
+import TestimonialsSlider from "../components/TestimonialsSlider";
+import ImagesSlider from "../components/ImagesSlider";
 
 export default function Home() {
   const carouselItems = [
@@ -70,6 +72,64 @@ export default function Home() {
     }
   ];
 
+  const testimonialsData = [
+    {
+      name: "Sarah Johnson",
+      role: "CEO",
+      company: "TechStart Inc.",
+      quote: "Working with this team transformed our business completely. Their professionalism and expertise exceeded all our expectations.",
+      rating: 5
+    },
+    {
+      name: "Michael Chen",
+      role: "Marketing Director",
+      company: "Digital Solutions",
+      quote: "The results speak for themselves. Our efficiency increased by 40% after implementing their solutions.",
+      rating: 5
+    },
+    {
+      name: "Emily Rodriguez",
+      role: "Operations Manager",
+      company: "Global Enterprises",
+      quote: "Exceptional service and support. They were available 24/7 and always went above and beyond to help us succeed.",
+      rating: 5
+    },
+    {
+      name: "David Thompson",
+      role: "CTO",
+      company: "Innovation Labs",
+      quote: "Their innovative approach to problem-solving helped us stay ahead of the competition. Highly recommended!",
+      rating: 5
+    }
+  ];
+
+  const imagesData = [
+    {
+      src: "/swirl.svg",
+      alt: "Team collaboration",
+      title: "Our Professional Team",
+      description: "Experienced professionals working together to deliver exceptional results for our clients."
+    },
+    {
+      src: "/swirl.svg",
+      alt: "Modern office space",
+      title: "State-of-the-Art Workspace",
+      description: "Our modern facilities are designed to foster creativity and productivity."
+    },
+    {
+      src: "/swirl.svg",
+      alt: "Client meeting",
+      title: "Client-Focused Approach",
+      description: "We prioritize understanding our clients' needs to deliver tailored solutions."
+    },
+    {
+      src: "/swirl.svg",
+      alt: "Technology solutions",
+      title: "Cutting-Edge Technology",
+      description: "We leverage the latest technologies to provide innovative solutions for your business."
+    }
+  ];
+
   return (
     <div className={styles.page}>
       <Navigation />
@@ -93,6 +153,16 @@ export default function Home() {
         <section className={styles.features}>
           <h2>Why Choose Us?</h2>
           <SimpleSlider items={carouselItems} />
+        </section>
+
+        <section className={styles.features}>
+          <h2>What Our Clients Say</h2>
+          <TestimonialsSlider testimonials={testimonialsData} />
+        </section>
+
+        <section className={styles.features}>
+          <h2>Our Work & Workspace</h2>
+          <ImagesSlider images={imagesData} />
         </section>
       </main>
 
