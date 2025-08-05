@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import styles from "./SimpleSlider.module.css";
 
 interface SliderItem {
   title: string;
@@ -35,21 +36,14 @@ export default function SimpleSlider({ items }: SimpleSliderProps) {
   };
 
   return (
-    <div style={{ position: 'relative', width: '100%' }}>
+    <div className={styles.sliderWrapper}>
       <Slider ref={sliderRef} {...settings}>
         {items.map((item, index) => (
           <div key={index}>
-            <div style={{ 
-              padding: '2rem', 
-              textAlign: 'center', 
-              minHeight: '300px',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center'
-            }}>
-              <h3 style={{ marginBottom: '1rem', fontSize: '2rem' }}>{item.title}</h3>
+            <div className={styles.slideContainer}>
+              <h3 className={styles.slideTitle}>{item.title}</h3>
               {item.content && item.content.map((paragraph, pIndex) => (
-                <p key={pIndex} style={{ marginBottom: '1rem', lineHeight: '1.6' }}>{paragraph}</p>
+                <p key={pIndex} className={styles.slideParagraph}>{paragraph}</p>
               ))}
             </div>
           </div>
@@ -57,67 +51,16 @@ export default function SimpleSlider({ items }: SimpleSliderProps) {
       </Slider>
       
       {/* Custom arrows at the bottom */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '1rem',
-        marginTop: '2rem',
-        padding: '1rem 0'
-      }}>
+      <div className={styles.arrowsContainer}>
         <button 
           onClick={goToPrev}
-          style={{
-            background: '#333',
-            color: 'white',
-            border: 'none',
-            borderRadius: '50%',
-            width: '50px',
-            height: '50px',
-            fontSize: '1.5rem',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all 0.3s ease'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.1)';
-            e.currentTarget.style.opacity = '0.8';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.opacity = '1';
-          }}
+          className={styles.arrowButton}
         >
           &#8249;
         </button>
         <button 
           onClick={goToNext}
-          style={{
-            background: '#333',
-            color: 'white',
-            border: 'none',
-            borderRadius: '50%',
-            width: '50px',
-            height: '50px',
-            fontSize: '1.5rem',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all 0.3s ease'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.1)';
-            e.currentTarget.style.opacity = '0.8';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.opacity = '1';
-          }}
+          className={styles.arrowButton}
         >
           &#8250;
         </button>
