@@ -55,7 +55,7 @@ export default function TestimonialsSlider({ testimonials }: TestimonialsSliderP
         {testimonials.map((testimonial, index) => (
           <div key={index}>
             <div className={styles.slideContainer}>
-              <div className={styles.quoteIcon}>"</div>
+              <div className={styles.quoteIcon}>&quot;</div>
               <p className={styles.quote}>{testimonial.quote}</p>
               {testimonial.rating && (
                 <div className={styles.rating}>

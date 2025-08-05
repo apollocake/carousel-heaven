@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./ImagesSlider.module.css";
+import Image from "next/image";
 
 interface ImageItem {
   src: string;
@@ -49,10 +50,12 @@ export default function ImagesSlider({ images }: ImagesSliderProps) {
           <div key={index}>
             <div className={styles.slideContainer}>
               <div className={styles.imageContainer}>
-                <img 
+                <Image 
                   src={image.src} 
                   alt={image.alt}
                   className={styles.image}
+                  layout="fill"
+                  objectFit="cover"
                 />
                 {(image.title || image.description) && (
                   <div className={styles.caption}>
